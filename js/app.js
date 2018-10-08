@@ -16,3 +16,12 @@ document.addEventListener('click', function() {
     console.log('Hiya');
   }
 })
+
+// Create a phrases array that contains at least 5 different phrases as strings.
+const phrases = ["NOT ALL WHO WANDER ARE LOST",
+                "PETER PICKED A PECK OF PICKLED PEPPERS",
+                "MAY THE FORCE BE WITH YOU",
+                "PICKLES ARE BETTER THAN CUCUMBERS",
+                "WITCH BREWS INCLUDE EYE OF NEWT"]
+
+// Create a getRandomPhraseAsArray function.
