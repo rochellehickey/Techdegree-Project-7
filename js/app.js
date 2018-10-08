@@ -7,9 +7,12 @@ const missed = 0;
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 document.addEventListener('click', function() {
-  if (document.querySelector("btn__reset")) {
-    document.getElementById("overlay").hide();
+  document.querySelector("btn__reset");
+  if (true) {
+    const overlay = document.getElementById("overlay");
+    overlay.style.display = 'none';
+    console.log('Bye-bye');
   } else {
-
+    console.log('Hiya');
   }
 })
