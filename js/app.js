@@ -25,3 +25,12 @@ const phrases = ["NOT ALL WHO WANDER ARE LOST",
                 "WITCH BREWS INCLUDE EYE OF NEWT"]
 
 // Create a getRandomPhraseAsArray function.
+function getRandomPhraseAsArray(arr) {
+  let randomPhrase = arr[Math.floor(Math.random() * arr.length)];
+  return randomPhrase;
+  // for (let i = 0; i < randomPhrase.length; i++) {
+
+  // }
+}
+
+console.log(getRandomPhraseAsArray(phrases));
