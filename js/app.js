@@ -34,3 +34,42 @@ function getRandomPhraseAsArray(arr) {
 console.log(getRandomPhraseAsArray(phrases));
 
 // Set the game display.
+function addPhraseToDisplay(arr) {
+  for (let i = 0; i < arr[i].length; i++) {
+    let charList = document.createElement('LI');
+    console.log("1");
+    let charLetters = document.createTextNode(getRandomPhraseAsArray(arr));
+    console.log("2");
+    charList.appendChild(charLetters); //?????
+    console.log("3");
+    document.getElementById('phrase').appendChild(charList);
+    console.log("4");
+  }
+  return arr;
+  console.log("5");
+  if (arr === " ") {
+    return "";
+    console.log("6A");
+  }  else {
+    arr.className = "letter";
+    console.log("6B");
+  }
+}
+
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
