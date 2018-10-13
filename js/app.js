@@ -15,49 +15,55 @@ document.addEventListener('click', function() {
   } else {
     console.log('Hiya');
   }
-})
+});
 
 // Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = ["NOT ALL WHO WANDER ARE LOST",
                 "PETER PICKED A PECK OF PICKLED PEPPERS",
                 "MAY THE FORCE BE WITH YOU",
                 "PICKLES ARE BETTER THAN CUCUMBERS",
-                "WITCH BREWS INCLUDE EYE OF NEWT"]
+                "WITCH BREWS INCLUDE EYE OF NEWT"];
 
 // Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr) {
   let randomPhrase = arr[Math.floor(Math.random() * arr.length)];
-  const splitRandomPhaseIntoCharArr = randomPhrase.split("");
-  return splitRandomPhaseIntoCharArr;
+  const splitRandomPhraseIntoCharArr = randomPhrase.split("");
+  return splitRandomPhraseIntoCharArr;
 }
 
 console.log(getRandomPhraseAsArray(phrases));
 
 // Set the game display.
 function addPhraseToDisplay(arr) {
-  for (let i = 0; i < arr[i].length; i++) {
-    let charList = document.createElement('LI');
-    console.log("1");
-    let charLetters = document.createTextNode(getRandomPhraseAsArray(arr));
-    console.log("2");
-    charList.appendChild(charLetters); //?????
-    console.log("3");
-    document.getElementById('phrase').appendChild(charList);
-    console.log("4");
+  for (let i = 0; i < arr.length; i++) {
+    let ul = document.getElementById('phraseList');
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode(arr[i]));
+    ul.appendChild(li);
   }
-  return arr;
-  console.log("5");
-  if (arr === " ") {
-    return "";
-    console.log("6A");
-  }  else {
-    arr.className = "letter";
-    console.log("6B");
-  }
+  for (let j = 0; j < arr.length; j++) {
+      if (li === /\w/) {
+      phrase.className = "letter";
+        console.log("4A");
+      }  else if (li === /\s/) {
+        return "";
+          console.log("4B");
+      } else {
+        return "";
+      }
+    }
 }
 
+
+
+
+
+
+
 const phraseArray = getRandomPhraseAsArray(phrases);
+  console.log("5");
 addPhraseToDisplay(phraseArray);
+  console.log("6");
 
 
 
