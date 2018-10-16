@@ -31,27 +31,29 @@ function getRandomPhraseAsArray(arr) {
   return splitRandomPhraseIntoCharArr;
 }
 
-console.log(getRandomPhraseAsArray(phrases));
-
 // Set the game display.
 function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i++) {
-    let ul = document.getElementById('phraseList');
-    let li = document.createElement('li');
+    const ul = document.getElementById('phraseList');
+    const li = document.createElement('li');
     li.appendChild(document.createTextNode(arr[i]));
     ul.appendChild(li);
-  }
-  for (let j = 0; j < arr.length; j++) {
-      if (li === /\w/) {
-      phrase.className = "letter";
-        console.log("4A");
-      }  else if (li === /\s/) {
-        return "";
-          console.log("4B");
-      } else {
-        return "";
-      }
+    // li.className = "letter"; // adds class to every li
+
+
+
+    //above works
+    //below broken
+
+    if (li.innerHTML !== " ") {
+      li.className = "letter";
+      console.log("4A");
+    } else {
+      console.log("4B");
     }
+
+  }
+
 }
 
 
