@@ -38,39 +38,60 @@ function addPhraseToDisplay(arr) {
     const li = document.createElement('li');
     li.appendChild(document.createTextNode(arr[i]));
     ul.appendChild(li);
-    // li.className = "letter"; // adds class to every li
-
-
-
-    //above works
-    //below broken
-
     if (li.innerHTML !== " ") {
       li.className = "letter";
-      console.log("4A");
+      console.log("letter");
     } else {
-      console.log("4B");
+      console.log("space");
     }
-
   }
-
 }
 
-
-
-
-
-
-
 const phraseArray = getRandomPhraseAsArray(phrases);
-  console.log("5");
 addPhraseToDisplay(phraseArray);
-  console.log("6");
+
+// above works
+// below broken
+
+// Create a checkLetter function.
+// // Add an event listener to the keyboard.
+// qwerty.onclick = function checkLetter(button) {
+//   let letterButtons = document.getElementsByTagName("button");
+//   let letters = document.getElementsByClassName("letter");
+
+qwerty.addEventListener("click", event => {
+    if (event.target.nodeName == "BUTTON") {
+      console.log("Clicked", event.target.textContent);
+
+      let letters = document.getElementsByClassName("letter");
+      let letterButtons = event.target.textContent;
+
+      for (let i = 0; i < letters.length; i++) {
+        letters = letters[i].innerHTML;
+        letters = letters.toLowerCase();
+
+        console.log(letters);
+        console.log(letterButtons);
+        // if (letterButtons === letters) {
+        //   console.log("Past the if");
+        //   li.className = "show";
+        //   let match = letters.innerHTML;
+        //   return match;
+        //   console.log("match");
+        // } else {
+        //   return null;
+        //   console.log("no match");
+        // }
+      }
+    }
+  });
+
+
+// }
 
 
 
-
-
+// check the button letter and then compare that letter to the string for matches
 
 
 
