@@ -55,41 +55,39 @@ addPhraseToDisplay(phraseArray);
 
 // Create a checkLetter function.
 // // Add an event listener to the keyboard.
-// qwerty.onclick = function checkLetter(button) {
-//   let letterButtons = document.getElementsByTagName("button");
-//   let letters = document.getElementsByClassName("letter");
 
 qwerty.addEventListener("click", event => {
-    if (event.target.nodeName == "BUTTON") {
-      console.log("Clicked", event.target.textContent);
 
-      let letters = document.getElementsByClassName("letter");
-      let letterButtons = event.target.textContent;
+  let letterButtons = event.target.textContent;
+  console.log(letterButtons + " outside");
 
-      for (let i = 0; i < letters.length; i++) {
-        letters = letters[i].innerHTML;
-        letters = letters.toLowerCase();
+  let lettersArr = document.getElementsByClassName("letter");
+  console.log(lettersArr);
 
-        console.log(letters);
-        console.log(letterButtons);
-        // if (letterButtons === letters) {
-        //   console.log("Past the if");
-        //   li.className = "show";
-        //   let match = letters.innerHTML;
-        //   return match;
-        //   console.log("match");
-        // } else {
-        //   return null;
-        //   console.log("no match");
-        // }
-      }
+  for (let i of lettersArr) {
+    console.log(i);
+    let letters = i.innerHTML;
+    letters = letters.toLowerCase();
+
+    console.log(letters + " letters inside for loop");
+    console.log(letterButtons + " button inside for loop");
+
+    if (letters === letterButtons) {
+      console.log("Past the if");
+      let li = document.getElementsByClassName("letter"); //???
+      li.className = "show";
+      let match = "";
+      return match;
+      console.log("match");
+    } else {
+      return null;
+      console.log("no match");
     }
-  });
+  }
+});
 
 
-// }
-
-
+//let i = 0; i < lettersArr.length; i++
 
 // check the button letter and then compare that letter to the string for matches
 
