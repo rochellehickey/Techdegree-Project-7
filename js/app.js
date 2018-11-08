@@ -57,7 +57,7 @@ addPhraseToDisplay(phraseArray);
 // Create a checkLetter function.
 function checkLetter(button) {
 
-  const letterButtons = document.getElementsByTagName("button").textContent;
+  let letterButtons = document.getElementsByTagName("button").textContent;
   const lettersArr = document.getElementsByClassName("letter");
   let letterFound = null;
 
