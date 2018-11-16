@@ -1,3 +1,4 @@
+'use strict';
 // Get the element with the ID of qwerty and save it to a variable.
 // Get the element with the ID of phrase and save it to a variable.
 // Create a missed variable, initialized to 0, that you’ll use later to keep track of the number of guesses the player has missed
@@ -55,9 +56,19 @@ addPhraseToDisplay(phraseArray);
 // below broken
 
 // Create a checkLetter function.
+
+
+// What is the function's overall intent? e.g. "Check if a letter exists in phrase" or what have you
+// What does the function's argument represent?
+// What are we trying to do with the loop and each branch of the if statement?
+// What do we expect the function to return?
+
+
 function checkLetter(button) {
 
-  let letterButtons = document.getElementsByTagName("button").textContent;
+  let target = event.target;
+  const letterButtons = target.textContent;
+  // let letterButtons = document.getElementsByTagName("button")[i].textContent;
   const lettersArr = document.getElementsByClassName("letter");
   let letterFound = null;
 
@@ -71,7 +82,7 @@ function checkLetter(button) {
     console.log(letterButtons + " button inside for loop");
 
     if (letters === letterButtons) {
-      letters[i].className = "show";
+      letters[i].classList.add('show');
       console.log("match");
       letterFound = lettersArr[i].textContent;
     } else {
