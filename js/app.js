@@ -52,55 +52,50 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
-// above works
-// below broken
-
 // Create a checkLetter function.
-
-
-// What is the function's overall intent? e.g. "Check if a letter exists in phrase" or what have you
-// What does the function's argument represent?
-// What are we trying to do with the loop and each branch of the if statement?
-// What do we expect the function to return?
-
-
 function checkLetter(button) {
-
-  let target = event.target;
-  const letterButtons = target.textContent;
+  //let target = event.target;
+  const letter = button.textContent;
   // let letterButtons = document.getElementsByTagName("button")[i].textContent;
   const lettersArr = document.getElementsByClassName("letter");
   let letterFound = null;
 
-  console.log(letterButtons + " outside");
-  console.log(lettersArr);
+  // console.log(letter + " outside");
+  // console.log(lettersArr);
 
+  // checking the button letter against the phrase array
   for (let i = 0; i < lettersArr.length; i++) {
-    let letters = lettersArr[i].textContent.toLowerCase();
+    // put the letters to lowercase so it can be compared directly to the button
+    let individualLetter = lettersArr[i].textContent.toLowerCase();
 
-    console.log(letters + " letters inside for loop");
-    console.log(letterButtons + " button inside for loop");
+    // console.log(individualLetter + " letters inside for loop");
+    // console.log(letter + " button inside for loop");
 
-    if (letters === letterButtons) {
-      letters[i].classList.add('show');
+    // if the individualLetter matches exactly the letter add a class
+    if (individualLetter === letter) {
+      lettersArr[i].classList.add('show');
       console.log("match");
+      // pass the found letter to letterFound
       letterFound = lettersArr[i].textContent;
-    } else {
+    } else { // if not nothing
       console.log("no match");
     }
   }
+
+  // return letterFound at the end
   return letterFound;
 };
 
 // Add an event listener to the keyboard.
 qwerty.addEventListener("click", (event) => {
+  // a class is added "chosen" that disables the button you picked
   if (event.target.nodeName == "BUTTON") {
       event.target.className = "chosen";
       event.target.setAttribute("disabled", true);
     }
-  return checkLetter(this);
+  // button gets passed to the function checkletter
+  return checkLetter(event.target);
 });
-
 
 
 
