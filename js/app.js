@@ -4,7 +4,7 @@
 // Create a missed variable, initialized to 0, that you’ll use later to keep track of the number of guesses the player has missed
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const missed = 0;
+let missed = 0;
 const heartLives = document.getElementsByClassName('tries');
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
@@ -105,14 +105,26 @@ qwerty.addEventListener("click", (event) => {
       event.target.setAttribute("disabled", true);
     }
   // button gets passed to the function checkLetter
-  return checkLetter(event.target);
+  let letterFound = checkLetter(event.target);
+
+  console.log("Olive");
+
+  // If letterFound value is null
+  if (letterFound === null) {
+
+  console.log("Branch");
+    //remove a try (heart) from the scoreboard (replace liveHeart.png with lostHeart.png)
+    heartLives[missed].setAttribute("src", "images/lostHeart.png");
+
+    // increase missed count by 1
+    missed = missed + 1;
+    console.log("missed number count: " + missed);
+   }
 });
 
 
 
   // let letterFound = checkLetter(event.target);
-
-  // console.log(letterFound);
 
   // // If letterFound value is null
   // if (letterFound === null) {
