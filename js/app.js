@@ -5,7 +5,7 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 let missed = 0;
-const heartLives = document.getElementsByClassName('tries');
+let heartLives = document.getElementsByTagName('img');
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 document.addEventListener('click', function() {
@@ -124,17 +124,6 @@ qwerty.addEventListener("click", (event) => {
 
 
 
-  // let letterFound = checkLetter(event.target);
-
-  // // If letterFound value is null
-  // if (letterFound === null) {
-  //   //remove a try (heart) from the scoreboard (replace liveHeart.png with lostHeart.png)
-  //   heartLives[missed].setAttribute("src", "images/lostHeart.png");
-
-  //   // increase missed count by 1
-  //   missed = missed + 1;
-  //   console.log("missed number count: " + missed);
-  //  }
 
 
 
