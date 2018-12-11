@@ -5,6 +5,7 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const missed = 0;
+const heartLives = document.getElementsByClassName('tries');
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 document.addEventListener('click', function() {
@@ -52,7 +53,17 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
+// above works
+// below broken
+
 // Create a checkLetter function.
+
+
+// What is the function's overall intent? e.g. "Check if a letter exists in phrase" or what have you
+// What does the function's argument represent?
+// What are we trying to do with the loop and each branch of the if statement?
+// What do we expect the function to return?
+
 function checkLetter(button) {
   //let target = event.target;
   const letter = button.textContent;
@@ -93,9 +104,30 @@ qwerty.addEventListener("click", (event) => {
       event.target.className = "chosen";
       event.target.setAttribute("disabled", true);
     }
-  // button gets passed to the function checkletter
+  // button gets passed to the function checkLetter
   return checkLetter(event.target);
 });
+
+
+
+  // let letterFound = checkLetter(event.target);
+
+  // console.log(letterFound);
+
+  // // If letterFound value is null
+  // if (letterFound === null) {
+  //   //remove a try (heart) from the scoreboard (replace liveHeart.png with lostHeart.png)
+  //   heartLives[missed].setAttribute("src", "images/lostHeart.png");
+
+  //   // increase missed count by 1
+  //   missed = missed + 1;
+  //   console.log("missed number count: " + missed);
+  //  }
+
+
+
+
+
 
 
 
