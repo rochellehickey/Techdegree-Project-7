@@ -53,16 +53,7 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray);
 
-// above works
-// below broken
-
 // Create a checkLetter function.
-
-
-// What is the function's overall intent? e.g. "Check if a letter exists in phrase" or what have you
-// What does the function's argument represent?
-// What are we trying to do with the loop and each branch of the if statement?
-// What do we expect the function to return?
 
 function checkLetter(button) {
   //let target = event.target;
@@ -107,12 +98,9 @@ qwerty.addEventListener("click", (event) => {
   // button gets passed to the function checkLetter
   let letterFound = checkLetter(event.target);
 
-  console.log("Olive");
-
   // If letterFound value is null
   if (letterFound === null) {
 
-  console.log("Branch");
     //remove a try (heart) from the scoreboard (replace liveHeart.png with lostHeart.png)
     heartLives[missed].setAttribute("src", "images/lostHeart.png");
 
@@ -120,8 +108,26 @@ qwerty.addEventListener("click", (event) => {
     missed = missed + 1;
     console.log("missed number count: " + missed);
    }
-});
 
+  // Create a checkWin function.
+
+  function checkWin() {
+    let classShow = document.getElementsByClassName("show");
+    let classLetters = document.getElementsByClassName("letters");
+    //check if the number of letters with class “show” is equal to the number of letters with class “letters”
+    if (classLetters.length === classShow.length) {
+      //If they’re equal, show the overlay screen with the “win” class and appropriate text.
+      console.log("Winner!");
+    } else if (missed <= 5) {
+      //if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+      console.log("Bummer");
+    } else {
+      console.log("Keep going!");
+    }
+  }
+  //call the function
+  checkWin();
+});
 
 
 
