@@ -2,17 +2,18 @@
 // Get the element with the ID of qwerty and save it to a variable.
 // Get the element with the ID of phrase and save it to a variable.
 // Create a missed variable, initialized to 0, that you’ll use later to keep track of the number of guesses the player has missed
+const overlay = document.getElementById('overlay');
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 let missed = 0;
 let heartLives = document.getElementsByTagName('img');
+const title = document.querySelector('.title');
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 document.addEventListener('click', function() {
   document.querySelector("btn__reset");
   if (true) {
-    const overlay = document.getElementById("overlay");
-    overlay.style.display = 'none';
+    overlay.style.display = "none";
     console.log('Bye-bye');
   } else {
     console.log('Hiya');
@@ -62,16 +63,10 @@ function checkLetter(button) {
   const lettersArr = document.getElementsByClassName("letter");
   let letterFound = null;
 
-  // console.log(letter + " outside");
-  // console.log(lettersArr);
-
   // checking the button letter against the phrase array
   for (let i = 0; i < lettersArr.length; i++) {
     // put the letters to lowercase so it can be compared directly to the button
     let individualLetter = lettersArr[i].textContent.toLowerCase();
-
-    // console.log(individualLetter + " letters inside for loop");
-    // console.log(letter + " button inside for loop");
 
     // if the individualLetter matches exactly the letter add a class
     if (individualLetter === letter) {
@@ -112,14 +107,17 @@ qwerty.addEventListener("click", (event) => {
   // Create a checkWin function.
 
   function checkWin() {
-    let classShow = document.getElementsByClassName("show");
-    let classLetters = document.getElementsByClassName("letters");
+    const classLetters = document.getElementsByClassName('letters');
+    let classShow = document.getElementsByClassName('show');
     //check if the number of letters with class “show” is equal to the number of letters with class “letters”
-    if (classLetters.length === classShow.length) {
+    if (classLetters.length === classShow.length && classShow.length !== 0) {
       //If they’re equal, show the overlay screen with the “win” class and appropriate text.
       console.log("Winner!");
-    } else if (missed <= 5) {
+    } else if (missed === 5) {
       //if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+      overlay.className = "lose";
+      overlay.style.display = "inherit";
+      overlay.innerHTML = "<h2>Total bummer, dude.</h2>"
       console.log("Bummer");
     } else {
       console.log("Keep going!");
@@ -127,6 +125,7 @@ qwerty.addEventListener("click", (event) => {
   }
   //call the function
   checkWin();
+
 });
 
 
