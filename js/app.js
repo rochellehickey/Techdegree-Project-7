@@ -13,7 +13,7 @@ const title = document.querySelector('.title');
 document.addEventListener('click', function() {
   document.querySelector("btn__reset");
   if (true) {
-    overlay.style.display = "none";
+    overlay.style.visibility = "hidden";
     console.log('Bye-bye');
   } else {
     console.log('Hiya');
@@ -112,11 +112,13 @@ qwerty.addEventListener("click", (event) => {
     //check if the number of letters with class “show” is equal to the number of letters with class “letters”
     if (classLetters.length === classShow.length && classShow.length !== 0) {
       //If they’re equal, show the overlay screen with the “win” class and appropriate text.
+      overlay.style.visibility = "visible";
+      overlay.className = "win";
       console.log("Winner!");
     } else if (missed === 5) {
       //if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+      overlay.style.visibility = "visible";
       overlay.className = "lose";
-      overlay.style.display = "inherit";
       overlay.innerHTML = "<h2>Total bummer, dude.</h2>"
       console.log("Bummer");
     } else {
