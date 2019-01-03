@@ -122,10 +122,10 @@ button {
 /* Overlay */
 
 #overlay {
+  visibility: visible;
   display: flex;
   flex-direction: column;
   position: fixed;
-  visibility: visible;
   color: #FFFFFF;
   justify-content: center;
   top: 0;

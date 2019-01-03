@@ -10,14 +10,16 @@ let heartLives = document.getElementsByTagName('img');
 const title = document.querySelector('.title');
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
-document.addEventListener('click', function() {
-  document.querySelector("btn__reset");
-  if (true) {
+document.addEventListener('click', function(event) {
+  // document.querySelector("btn__reset");
+  if (!event.target.matches("btn__reset")) {
     overlay.style.visibility = "hidden";
+    event.stopPropagation();
     console.log('Bye-bye');
   } else {
     console.log('Hiya');
   }
+  return;
 });
 
 // Create a phrases array that contains at least 5 different phrases as strings.
@@ -112,12 +114,15 @@ qwerty.addEventListener("click", (event) => {
     //check if the number of letters with class “show” is equal to the number of letters with class “letters”
     if (classLetters.length === classShow.length && classShow.length !== 0) {
       //If they’re equal, show the overlay screen with the “win” class and appropriate text.
+      event.stopImmediatePropagation();
       overlay.style.visibility = "visible";
       overlay.className = "win";
+      overlay.innerHTML = "<h2>Winner, winner, chicken dinner!</h2>"
       console.log("Winner!");
     } else if (missed === 5) {
       //if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
-      overlay.style.visibility = "visible";
+      event.stopImmediatePropagation();
+      overlay.setAttribute('style', 'visibility: visible');
       overlay.className = "lose";
       overlay.innerHTML = "<h2>Total bummer, dude.</h2>"
       console.log("Bummer");
