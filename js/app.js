@@ -109,10 +109,12 @@ qwerty.addEventListener("click", (event) => {
   // Create a checkWin function.
 
   function checkWin() {
-    const classLetters = document.getElementsByClassName('letters');
     let classShow = document.getElementsByClassName('show');
+    const classLetters = document.getElementsByClassName('letters');
+    let classShowLength = classShow.length;
+    let classLettersLength = classLetters.length;
     //check if the number of letters with class “show” is equal to the number of letters with class “letters”
-    if (classLetters.length === classShow.length && classShow.length !== 0) {
+    if (classShowLength === classLettersLength) {
       //If they’re equal, show the overlay screen with the “win” class and appropriate text.
       event.stopImmediatePropagation();
       overlay.style.visibility = "visible";
