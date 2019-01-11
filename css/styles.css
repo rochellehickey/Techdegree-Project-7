@@ -13,7 +13,7 @@
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
   --font-size-medium: 20px;
-  --transition: all .2s ease-in-out;
+  --transition: all .5s ease-in-out;
 }
 
 /* main */
@@ -86,6 +86,10 @@ button {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  /*Create CSS transitions for each letter in the phrase display as they are revealed.*/
+  -webkit-transition: var(--transition);
+  -o-transition: var(--transition);
+  transition: var(--transition);
 }
 
 .space {

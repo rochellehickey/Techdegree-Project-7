@@ -8,10 +8,10 @@ const phrase = document.getElementById('phrase');
 let missed = 0;
 let heartLives = document.getElementsByTagName('img');
 const title = document.querySelector('.title');
+const buttonRestart = document.createElement("button");
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 document.addEventListener('click', function(event) {
-  // document.querySelector("btn__reset");
   if (!event.target.matches("btn__reset")) {
     overlay.style.visibility = "hidden";
     event.stopPropagation();
@@ -59,9 +59,7 @@ addPhraseToDisplay(phraseArray);
 // Create a checkLetter function.
 
 function checkLetter(button) {
-  //let target = event.target;
   const letter = button.textContent;
-  // let letterButtons = document.getElementsByTagName("button")[i].textContent;
   const lettersArr = document.getElementsByClassName("letter");
   let letterFound = null;
 
@@ -76,7 +74,7 @@ function checkLetter(button) {
       console.log("match");
       // pass the found letter to letterFound
       letterFound = lettersArr[i].textContent;
-    } else { // if not nothing
+    } else { // if not, nothing
       console.log("no match");
     }
   }
@@ -119,6 +117,10 @@ qwerty.addEventListener("click", (event) => {
       overlay.className = "win";
       overlay.innerHTML = "<h2>Winner, winner, chicken dinner!</h2>"
       console.log("Winner!");
+      // Add a button to the “success” and “failure” screens that reset the game.
+      buttonRestart.innerHTML = "<a>Keep the party going!</a>";
+      buttonRestart.className = "btn__reset";
+      overlay.appendChild(buttonRestart);
     } else if (missed === 5) {
       //if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
       event.stopImmediatePropagation();
@@ -126,6 +128,10 @@ qwerty.addEventListener("click", (event) => {
       overlay.className = "lose";
       overlay.innerHTML = "<h2>Total bummer, dude.</h2>"
       console.log("Bummer");
+      // Add a button to the “success” and “failure” screens that reset the game.
+      buttonRestart.innerHTML = "<a>Try that again, Brah!</a>";
+      buttonRestart.className = "btn__reset";
+      overlay.appendChild(buttonRestart);
     } else {
       console.log("Keep going!");
     }
@@ -134,6 +140,23 @@ qwerty.addEventListener("click", (event) => {
   checkWin();
 
 });
+
+
+buttonRestart.addEventListener ('click', function(event) {
+  // recreate the buttons in the keyboard
+
+  // generate a new random phrase
+  addPhraseToDisplay(phraseArray);
+  // set the number of misses to zero
+  missed = 0;
+});
+
+
+
+
+
+
+
 
 
 
