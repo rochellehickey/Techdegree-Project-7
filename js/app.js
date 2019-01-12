@@ -144,11 +144,21 @@ qwerty.addEventListener("click", (event) => {
 
 buttonRestart.addEventListener ('click', function(event) {
   // recreate the buttons in the keyboard
+  let keys = document.querySelectorAll('#qwerty button');
+
+  [].forEach.call(keys, function(el) {
+    el.classList.remove("chosen");
+    el.removeAttribute("disabled");
+  });
 
   // generate a new random phrase
+  document.getElementById('phraseList').innerHTML = null;
   addPhraseToDisplay(phraseArray);
+  console.log(phrase);
+
   // set the number of misses to zero
   missed = 0;
+  console.log(missed);
 });
 
 
