@@ -9,25 +9,22 @@ let missed = 0;
 let heartLives = document.getElementsByTagName('img');
 const title = document.querySelector('.title');
 const buttonRestart = document.createElement("button");
-
-// Attach a event listener to the “Start Game” button to hide the start screen overlay.
-document.addEventListener('click', function(event) {
-  if (!event.target.matches("btn__reset")) {
-    overlay.style.visibility = "hidden";
-    event.stopPropagation();
-    console.log('Bye-bye');
-  } else {
-    console.log('Hiya');
-  }
-  return;
-});
-
 // Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = ["NOT ALL WHO WANDER ARE LOST",
                 "PETER PICKED A PECK OF PICKLED PEPPERS",
                 "MAY THE FORCE BE WITH YOU",
                 "PICKLES ARE BETTER THAN CUCUMBERS",
                 "WITCH BREWS INCLUDE EYE OF NEWT"];
+
+// Attach a event listener to the “Start Game” button to hide the start screen overlay.
+document.addEventListener('click', function(event) {
+  if (!event.target.matches("btn__reset")) {
+    overlay.style.visibility = "hidden";
+    event.stopPropagation();
+  } else {
+  }
+  return;
+});
 
 // Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr) {
@@ -45,10 +42,8 @@ function addPhraseToDisplay(arr) {
     ul.appendChild(li);
     if (li.innerHTML !== " ") {
       li.className = "letter";
-      console.log("letter");
     } else {
       li.className = "space";
-      console.log("space");
     }
   }
 }
@@ -71,11 +66,9 @@ function checkLetter(button) {
     // if the individualLetter matches exactly the letter add a class
     if (individualLetter === letter) {
       lettersArr[i].classList.add('show');
-      console.log("match");
       // pass the found letter to letterFound
       letterFound = lettersArr[i].textContent;
     } else { // if not, nothing
-      console.log("no match");
     }
   }
 
@@ -94,14 +87,13 @@ qwerty.addEventListener("click", (event) => {
   let letterFound = checkLetter(event.target);
 
   // If letterFound value is null
-  if (letterFound === null) {
+  if (letterFound === null && event.target.nodeName == "BUTTON") {
 
     //remove a try (heart) from the scoreboard (replace liveHeart.png with lostHeart.png)
     heartLives[missed].setAttribute("src", "images/lostHeart.png");
 
     // increase missed count by 1
     missed = missed + 1;
-    console.log("missed number count: " + missed);
    }
 
   // Create a checkWin function.
@@ -116,7 +108,6 @@ qwerty.addEventListener("click", (event) => {
       overlay.style.visibility = "visible";
       overlay.className = "win";
       overlay.innerHTML = "<h2>Winner, winner, chicken dinner!</h2>"
-      console.log("Winner!");
       // Add a button to the “success” and “failure” screens that reset the game.
       buttonRestart.innerHTML = "<a>Keep the party going!</a>";
       buttonRestart.className = "btn__reset";
@@ -127,13 +118,11 @@ qwerty.addEventListener("click", (event) => {
       overlay.setAttribute('style', 'visibility: visible');
       overlay.className = "lose";
       overlay.innerHTML = "<h2>Total bummer, dude.</h2>"
-      console.log("Bummer");
       // Add a button to the “success” and “failure” screens that reset the game.
       buttonRestart.innerHTML = "<a>Try that again, Brah!</a>";
       buttonRestart.className = "btn__reset";
       overlay.appendChild(buttonRestart);
     } else {
-      console.log("Keep going!");
     }
   }
   //call the function
@@ -141,24 +130,28 @@ qwerty.addEventListener("click", (event) => {
 
 });
 
-
+// Exceeds Expectations -- Reset the game at the end
 buttonRestart.addEventListener ('click', function(event) {
   // recreate the buttons in the keyboard
   let keys = document.querySelectorAll('#qwerty button');
 
   [].forEach.call(keys, function(el) {
-    el.classList.remove("chosen");
-    el.removeAttribute("disabled");
+    el.classList.remove('chosen');
+    el.removeAttribute('disabled');
   });
 
   // generate a new random phrase
   document.getElementById('phraseList').innerHTML = null;
+  const phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
-  console.log(phrase);
 
   // set the number of misses to zero
   missed = 0;
-  console.log(missed);
+
+  // reset heartLives to full
+  [].forEach.call(heartLives, function(el) {
+    el.setAttribute("src", "images/liveHeart.png");
+  });
 });
 
 
